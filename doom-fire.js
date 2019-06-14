@@ -63,10 +63,15 @@ class DoomFire {
 
     start() {
         this.startFireIntensity();
-        setInterval(() => {
-            this.calculateFireIntensity();
-            this.render();
-        }, 30);
+        this.loop();
+    }
+
+    loop() {
+        this.calculateFireIntensity();
+        this.render();
+        requestAnimationFrame(() => {
+            this.loop();
+        });
     }
 
     /**
